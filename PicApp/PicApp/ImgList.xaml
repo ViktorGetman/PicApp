@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PicApp.ImgList">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+            <ListView x:Name="ImgListView"
+                      SelectedItem="{Binding SelectedPhoto}"
+                      ItemsSource="{Binding Photos}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ImageCell Text="{Binding Name}" 
+                       Detail="{Binding CreateDateTime}" 
+                       ImageSource="{Binding ImagePath}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Text="Открыть" Clicked="OnOpenClicked" />
+            <Button Text="Удалить" Clicked="OnDeleteClicked" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

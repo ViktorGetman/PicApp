@@ -1,0 +1,11 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PicApp.PinPage">
+
+    <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+        <Label Text="Введите пин-код:" FontSize="Large" />
+        <Entry x:Name="pinEntry" Placeholder="Пин-код" IsPassword="true" MaxLength="4" />
+        <Button Text="Войти" Clicked="OnConfirmedClicked" />
+    </StackLayout>
+
+</ContentPage>
