@@ -1,6 +1,5 @@
-﻿using PicApp.Services;
-using PicApp.Views;
-using System;
+﻿using System;
+using PicApp.Helpers;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 

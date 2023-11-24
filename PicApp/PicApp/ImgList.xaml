@@ -5,7 +5,6 @@
     <ContentPage.Content>
         <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
             <ListView x:Name="ImgListView"
-                      SelectedItem="{Binding SelectedPhoto}"
                       ItemsSource="{Binding Photos}">
                 <ListView.ItemTemplate>
                     <DataTemplate>

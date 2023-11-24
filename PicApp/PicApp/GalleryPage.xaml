@@ -3,19 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PicApp.GalleryPage">
 
-    <StackLayout>
- 
-        <CarouselView x:Name="photoCarouselView"
-                      ItemsSource="{Binding Photos}"
-                      >
-            <CarouselView.ItemTemplate>
-                <DataTemplate>
-                    <Image Source="{Binding}" Aspect="AspectFit" />
-                </DataTemplate>
-            </CarouselView.ItemTemplate>
-        </CarouselView>
+    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
 
-        <Button Text="Выбрать директорию" Clicked="OnSelectDirectoryClicked" />
+        <Image Margin="0,0,0,10" x:Name="ImageView"/>
+        
+        <Label x:Name="DateTimeLabel"/>
+
     </StackLayout>
 
 </ContentPage>

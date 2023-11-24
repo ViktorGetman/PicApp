@@ -16,7 +16,6 @@ namespace PicApp
     public partial class ImgList : ContentPage
     {
         public ObservableCollection<ImgModel> Photos {get; set; }
-        public ImgModel SelectedPhoto { get; set; }
 
         public ImgList()
         {
@@ -68,39 +67,43 @@ namespace PicApp
         }
         private void OnOpenClicked(object sender, EventArgs e)
         {
-            string pinCode = pinEntry.Text;
-
-            if (string.IsNullOrEmpty(pinCode))
+            try
             {
-                DisplayAlert("Ошибка", "Введите пинкод", "Ок");
+                var selectedPhoto = ImgListView.SelectedItem as ImgModel;
+
+                if (ImgListView.SelectedItem == null)
+                {
+                    DisplayAlert("Ошибка", "Выберите картинку", "Ок");
+                    return;
+                }
+                Navigation.PushAsync(new GalleryPage(selectedPhoto));
 
             }
-
-            PinCodeManager.SavePinCode(pinCode);
-
-            // Ваш код для сохранения пин-кода, например, в хранилище или на сервере.
-
-            DisplayAlert("Сохранено", "Пин-код сохранен: " + pinCode, "ОК");
-
-            Navigation.PushAsync(new PinPage());
+            catch (Exception)
+            {
+                DisplayAlert("Ошибка", "Произошла непредвиденная ошибка", "Ок");
+            }
         }
-        private void OnDeleteClicked(object sender, EventArgs e)
+
+            private void OnDeleteClicked(object sender, EventArgs e)
         {
             try
             {
-                if (SelectedPhoto == null)
+                var selectedPhoto = ImgListView.SelectedItem as ImgModel;
+                if (ImgListView.SelectedItem == null)
                 {
                     DisplayAlert("Ошибка", "Выберите картинку", "Ок");
+                    return;
                 }
-                var selectedPhoto = SelectedPhoto;
+                
                 Photos.Remove(selectedPhoto);
-                if (File.Exists(SelectedPhoto.ImagePath))
+                if (!File.Exists(selectedPhoto.ImagePath))
                 {
                     return;
                 }
-                File.Delete(SelectedPhoto.ImagePath);
+                File.Delete(selectedPhoto.ImagePath);
             }
-            catch (Exception ex) 
+            catch (Exception) 
             {
                 DisplayAlert("Ошибка", "Произошла непредвиденная ошибка", "Ок");
             }

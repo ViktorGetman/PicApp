@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using PicApp.Helpers;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -23,7 +23,9 @@ namespace PicApp
             string originalPinCode = PinCodeManager.GetPinCode();
             if (originalPinCode == pinCode)
             {
-                Navigation.PushAsync(new GalleryPage());
+                Navigation.PushAsync(new ImgList());
+
+                pinEntry.Text = null;
 
                 return;
             }

@@ -4,7 +4,7 @@ using System.Text;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
-namespace PicApp
+namespace PicApp.Helpers
 {
     public class PinCodeManager
     {
@@ -26,8 +26,8 @@ namespace PicApp
         public static string GetPinCode()
         {
             try
-            { 
-                    return SecureStorage.GetAsync(PinCodeKey).Result;
+            {
+                return SecureStorage.GetAsync(PinCodeKey).Result;
             }
             catch (Exception ex)
             {
